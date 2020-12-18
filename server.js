@@ -11,13 +11,28 @@ const database = path.join(__dirname, "/db/db.json");
 
 
 //Server HTML Routes
-app.get("/notes", function(req, res) {
-    res.sendFile(path.join(directory, "notes.html"))
+app.get("/notes", function(request, response) {
+    response.sendFile(path.join(directory, "notes.html"))
+});
+
+app.get("*", function (request, response) {
+    response.sendFile(path.join(directory, "index.html"))
 });
 
 
 //Server API Routes
 
-app.get("/api/notes", function(req, res) {
-    res.sendFile(database);
+app.get("/api/notes", function(request, response) {
+    response.sendFile(database);
 });
+
+//Post notes
+app.post("/api/notes", function(request, response) {
+    let prevNotes = JSON.parse(fs.readFileSync(database));
+
+    let newNotes = request.body
+
+    let noteID = (prevNotes.length).toString();
+    newNotes.id = noteID;
+    prevNotes.push (newNote)
+})
