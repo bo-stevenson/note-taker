@@ -32,7 +32,18 @@ app.get("/api/notes", function(request, response) {
 
 //Post notes
 app.post("/api/notes", function(request, response) {
-   let note = request.body;
-   note.id = note.length;
-   id++; 
+    notes = fs.readFileSync(database);
+    console.log(notes);
+    notes = JSON.parse(notes);
+    request.body.id = notes.length;
+    notes.push(request.body);
+    notes = JSON.stringify(notes);
+    console.log(notes);
+    
+    //write file
+    fs.writeFile(database, notes, function(error) {
+        if(error) throw error;
+    });
+    response.json(JSON.parse(notes));
+    
 });
