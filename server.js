@@ -47,3 +47,23 @@ app.post("/api/notes", function(request, response) {
     response.json(JSON.parse(notes));
     
 });
+
+//Delete Notes
+
+app.delete("/api/notes/:id", function (request, response) {
+    notes = fs.readFileSync(database);
+    console.log(notes);
+    notes = JSON.parse(notes);
+    notes = notes.filter(noteRes => {
+        return noteRes.id != req.params.id;
+    });
+    notes = JSON.stringify(notes);
+    fs.writeFile(database, notes, (error) => {
+        if (error) throw error;
+    });
+    response.json(notes);
+});
+//Start listening
+app.listen(PORT, function() {
+    console.log("Listening on PORT " + PORT);
+})
