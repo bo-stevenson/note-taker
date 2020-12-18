@@ -33,7 +33,7 @@ app.post("/api/notes", function(request, response) {
     notes = fs.readFileSync(database);
     console.log(notes);
     notes = JSON.parse(notes);
-    request.body.id = notes.length;
+    request.body.id = notes.length.toString();
     notes.push(request.body);
     notes = JSON.stringify(notes);
     console.log(notes);
