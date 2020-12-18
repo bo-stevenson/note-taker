@@ -14,3 +14,10 @@ const database = path.join(__dirname, "/db/db.json");
 app.get("/notes", function(req, res) {
     res.sendFile(path.join(directory, "notes.html"))
 });
+
+
+//Server API Routes
+
+app.get("/api/notes", function(req, res) {
+    res.sendFile(database);
+});
