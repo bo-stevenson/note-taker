@@ -16,12 +16,10 @@ app.use(express.static(directory));
 let notes = [];
 //Server HTML Routes
 app.get("/notes", function(request, response) {
-    response.sendFile(path.join(directory, "notes.html"))
+    response.sendFile(path.join(directory, "/notes.html"))
 });
 
-app.get("*", function (request, response) {
-    response.sendFile(path.join(directory, "index.html"))
-});
+
 
 
 //Server API Routes
@@ -55,13 +53,17 @@ app.delete("/api/notes/:id", function (request, response) {
     console.log(notes);
     notes = JSON.parse(notes);
     notes = notes.filter(noteRes => {
-        return noteRes.id != req.params.id;
+        return noteRes.id != request.params.id;
     });
     notes = JSON.stringify(notes);
     fs.writeFile(database, notes, (error) => {
         if (error) throw error;
     });
     response.json(notes);
+});
+
+app.get("*", function (request, response) {
+    response.sendFile(path.join(directory, "/index.html"))
 });
 //Start listening
 app.listen(PORT, function() {
