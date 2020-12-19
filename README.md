@@ -22,12 +22,14 @@ This project utilizes express to create an app that writes, saves, and deletes n
 
 ## Installation
 
- To use locally: git clone the repository
+To install locally: git clone the repository and run "npm install" in the directory.
 
 ## Usage
 
-Locally: enter "npm run start" in the CLI in the directory with the code to start listening on the specified port, then go to localhost in the browser to view application
+For local use: enter "npm run start" in the CLI in the directory with the code to start listening on the specified port, then go to localhost:"insert port here" in the browser to view application.
+For online use: go to https://rocky-headland-00377.herokuapp.com/notes to view deployed project.
 
+Enter Notes in the Header and body and click the save icon located at the top right of the page to save notes. Click previous notes located on the left-most side to view them again.
 ## Contribution
 
 none
@@ -38,7 +40,7 @@ none
 
 ## Screenshots
 
-![Screenshot](assets/images/screenshot.png)
+![Screenshot](public/assets/images/screenshot.png)
 ## License
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
